@@ -8,3 +8,6 @@ Client API version: 1.17
 Boot2docker version:
 Boot2Docker-cli version: v1.5.0
 Git commit: ccd9032
+
+## Redis example
+An example using redis for data persistence 
