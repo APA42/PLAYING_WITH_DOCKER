@@ -17,7 +17,7 @@ An example using redis for data persistence
 ### 1 - Create docker image of your python program
 ```
 docker build -t python-redis-example-image .
-``
+```
 
 ### 2 - Execution with Docker
 #### We need a container for redis
