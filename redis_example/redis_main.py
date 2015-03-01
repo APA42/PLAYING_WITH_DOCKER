@@ -4,7 +4,7 @@ import redis
 from redis_access import redis as redis_access
 
 
-REDIS_SERVER_URI = "redis://192.168.50.100:6379"
+REDIS_SERVER_URI = "redis://redis-bote-db:6379"
 KEY_PREFIX = "A_KEY_"
 VALUE_PREFIX = "A_VALUE_"
 
