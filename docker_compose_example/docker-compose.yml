@@ -1,0 +1,17 @@
+postgres:
+  image: postgres
+  restart: always
+  environment:
+    - POSTGRES_USER=apaUser
+    - POSTGRES_PASSWORD=42
+    - POSTGRES_DB=apaBote
+#  ports:
+#    - 5432:5432
+
+dockercomposeexample:
+  image: apa42/docker_compose_example
+  restart: always
+  command: apa_run_main
+  links:
+    - postgres:apa_bote_link
+
