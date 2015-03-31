@@ -43,18 +43,26 @@ https://github.com/aleasoluciones/simpledatamigrate
 The application insert five elements to the database (alias bote) and query for all elements
 
 ### Build and tag the image
-```./build_image_and_tag.sh```
+```
+./build_image_and_tag.sh
+```
 
 ### Run
-```docker-compose up -d```
+```
+docker-compose up -d
+```
 
 See the logs
 
-```docker-compose logs```
+```
+docker-compose logs
+```
 
-### Connect directly to postgres
+### Optional. Connect directly to postgres
 Uncomment ports in docker-compose.yml file
 
-```psql --host=POSTGRES_CONTAINER_IP --port 5432 --username=postgres --password --dbname=inventory```
+```
+psql --host=POSTGRES_CONTAINER_IP --port 5432 --username=postgres --password --dbname=inventory
+```
 
 POSTGRES_CONTAINER_IP == ip of the container or ip of boot2docker for mac
