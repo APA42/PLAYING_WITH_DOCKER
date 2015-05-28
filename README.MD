@@ -66,3 +66,61 @@ psql --host=POSTGRES_CONTAINER_IP --port 5432 --username=postgres --password --d
 ```
 
 POSTGRES_CONTAINER_IP == ip of the container or ip of boot2docker for mac
+
+## Share host local time with containers (MacOsx)
+
+### Situation
+If you try to share localtime you'll probably receive an error
+
+```
+$>docker run --rm -v /etc/localtime:/etc/localtime:ro debian date
+```
+
+```
+FATA[0000] Error response from daemon: Cannot start container 20538e53a0d9d: [8] System error: not a directory
+```
+
+### What I do
+Your home directory is shared to Boot2Docker (Virtual Machine) at /Users/MyUser. The idea is to share the localtime file
+
+
+#### Does not work :-( 
+At your home directory create a link /etc/localtime of to your real machine
+
+```
+/Users/MyUser>ln -s /etc/localtime localtime
+```
+
+#### This works
+Copy your /etc/localtime file to your home directory
+
+```
+/Users/MyUser>cp /etc/localtime localtime
+```
+
+#### Continue
+Enter into boot2docker virtual machine
+
+```
+$>boot2docker ssh
+```
+
+If /etc/localtime exists as directory, move it
+
+```
+docker@boot2docker: sudo mv  /etc/localtime/ /etc/localtime.ORG/
+```
+
+Copy localtime file
+
+```
+docker@boot2docker: sudo cp  /Users/MyUser/localtime /etc/localtime
+```
+
+### Test it
+Run a container and check the date. Have to be the same as your computer
+
+```
+$>docker run --rm -v /etc/localtime:/etc/localtime:ro debian date
+```
+
